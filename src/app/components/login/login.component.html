@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2>Iniciar Sesión</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="nombreOrCorreo">Usuario o Email</label>
+      <input
+        type="text"
+        id="nombreOrCorreo"
+        formControlName="nombreOrCorreo"
+        required
+      >
+      <div *ngIf="loginForm.get('nombreOrCorreo')?.invalid && loginForm.get('nombreOrCorreo')?.touched">
+        Campo requerido
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="contrasena">Contraseña</label>
+      <input
+        type="password"
+        id="contrasena"
+        formControlName="contrasena"
+        required
+      >
+      <div *ngIf="loginForm.get('contrasena')?.invalid && loginForm.get('contrasena')?.touched">
+        Campo requerido
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!loginForm.valid">Ingresar</button>
+  </form>
+</div>

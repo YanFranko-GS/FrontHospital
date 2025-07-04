@@ -1,0 +1,121 @@
+/* Modo Oscuro General */
+body.dark-mode {
+  background-color: #1a1c20;
+  color: #ECF0F1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Títulos */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #F8D9E0;
+}
+
+/* Formularios */
+body.dark-mode form {
+  background-color: #2C3E50;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Labels */
+body.dark-mode .form-label {
+  color: #ECF0F1;
+}
+
+/* Inputs y Select */
+body.dark-mode .form-control,
+body.dark-mode select.form-control {
+  background-color: #34495E;
+  border: 1px solid #811437;
+  color: #ECF0F1;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .form-control:focus {
+  border-color: #c63d64;
+  box-shadow: 0 0 8px rgba(198, 61, 100, 0.4);
+  background-color: #3b516c;
+}
+
+/* Botones */
+body.dark-mode .btn {
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .btn-success {
+  background-color: #0c920c;
+  color: #fff;
+}
+
+body.dark-mode .btn-success:hover {
+  background-color: #067a23;
+}
+
+body.dark-mode .btn-secondary {
+  background-color: #7f8c8d;
+  color: #fff;
+}
+
+body.dark-mode .btn-secondary:hover {
+  background-color: #95a5a6;
+}
+
+body.dark-mode .btn-warning {
+  background-color: #e67e22;
+  color: #fff;
+}
+
+body.dark-mode .btn-warning:hover {
+  background-color: #f39c12;
+}
+
+body.dark-mode .btn-danger {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+body.dark-mode .btn-danger:hover {
+  background-color: #e74c3c;
+}
+
+/* Tabla */
+body.dark-mode .table {
+  background-color: #24384d;
+  color: #ECF0F1;
+}
+
+body.dark-mode .table th {
+  background-color: #811437;
+  color: #161515;
+}
+
+body.dark-mode .table-striped tbody tr:nth-of-type(odd) {
+  background-color: #34495E;
+}
+
+body.dark-mode .table-striped tbody tr:hover {
+  background-color: #3b516c;
+}
+
+/* HR separador */
+body.dark-mode hr {
+  border-color: #811437;
+}
+
+/* Links */
+body.dark-mode a {
+  color: #F8D9E0;
+}
+
+body.dark-mode a:hover {
+  color: #ff9fb3;
+}
+
+/* Mensajes vacíos */
+body.dark-mode .no-data-message {
+  color: #bbb;
+}

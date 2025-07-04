@@ -1,0 +1,52 @@
+<div class="d-flex">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>🩺 Administrador</h3>
+    <hr />
+    <a routerLink="/IndexDash">📊 Dashboard</a>
+    <a routerLink="/Paciente">👥 Gestionar Pacientes</a>
+    <a href="#">🧑‍⚕️ Gestionar Medicos </a>
+    <a href="#">🕒 Gestionar Horarios </a>
+    <a href="#">📅 Gestionar Citas </a>
+    <a href="#">📖 Historial</a>
+    <a href="#">⚙️ Configuración</a>
+    <a routerLink="/login">🚪 Cerrar Sesión</a>
+    
+    <button (click)="toggleDarkMode()" class="btn-dark-mode">
+  🌙 Cambiar Modo
+    </button>
+    
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1 class="dashboard-title">Bienvenido, Administrador</h1>
+
+
+
+
+    <div class="card-container">
+      <div class="card primary">
+        <h5>Usuarios Registrados</h5>
+        <p class="value">150</p>
+      </div>
+
+      <div class="card success">
+        <h5>Citas del Mes</h5>
+        <p class="value">120</p>
+      </div>
+
+      <div class="card warning">
+        <h5>Médicos Activos</h5>
+        <p class="value">35</p>
+      </div>
+    </div>
+
+    <div class="card news">
+      <h4>📢 Noticias del Sistema</h4>
+      <p>Revisa los reportes semanales de citas y actualiza la disponibilidad médica.</p>
+    </div>
+  </div>
+
+  
+</div>

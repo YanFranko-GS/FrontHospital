@@ -1,0 +1,125 @@
+<div class="home-container">
+  <!-- Bienvenida -->
+  <div class="welcome-section">
+    <h1>{{ welcomeMessage }}</h1>
+    <p>Has iniciado sesión correctamente en el Sistema de Reserva de Citas Médicas.</p>
+    <p class="subtitle">Gestiona tus citas, consulta tu historial y accede a servicios médicos personalizados desde este panel.</p>
+  </div>
+
+  <!-- Estadísticas -->
+  <section class="stats">
+    <div class="card stat-card">
+      <i class="bi bi-clipboard2-check"></i>
+      <div>
+        <h3>+8,000</h3>
+        <p>Citas reservadas</p>
+      </div>
+    </div>
+    <div class="card stat-card">
+      <i class="bi bi-emoji-smile"></i>
+      <div>
+        <h3>95%</h3>
+        <p>Pacientes satisfechos</p>
+      </div>
+    </div>
+    <div class="card stat-card">
+      <i class="bi bi-hospital"></i>
+      <div>
+        <h3>+50</h3>
+        <p>Especialidades médicas</p>
+      </div>
+    </div>
+    <div class="card stat-card">
+      <i class="bi bi-person-vcard"></i>
+      <div>
+        <h3>+1,200</h3>
+        <p>Médicos Registrados</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Acciones rápidas -->
+  <section class="actions">
+    <h2>Accesos Rápidos</h2>
+    <div class="buttons-group">
+      <button routerLink="/reservas" class="btn-primary">
+        <i class="bi bi-calendar-plus"></i> Reservar Cita
+      </button>
+      <button routerLink="/historial" class="btn-secondary">
+        <i class="bi bi-clock-history"></i> Ver Historial
+      </button>
+      <button routerLink="/perfil" class="btn-info">
+        <i class="bi bi-person-circle"></i> Mi Perfil
+      </button>
+      <button routerLink="/informes" class="btn-warning">
+        <i class="bi bi-bar-chart"></i> Informes Médicos
+      </button>
+    </div>
+  </section>
+
+  <!-- Servicios Médicos -->
+  <section class="services">
+    <h2>Servicios Médicos Disponibles</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="bi bi-calendar-event"></i>
+        <h3>Reserva de Citas</h3>
+        <p>Agéndate online en minutos desde cualquier dispositivo.</p>
+      </div>
+      <div class="service-card">
+        <i class="bi bi-house-heart"></i>
+        <h3>Atención Domiciliaria</h3>
+        <p>Consulta médica a domicilio para adultos mayores o pacientes crónicos.</p>
+      </div>
+      <div class="service-card">
+        <i class="bi bi-file-earmark-medical"></i>
+        <h3>Recetas Digitales</h3>
+        <p>Recibe tus recetas electrónicas directamente en tu correo.</p>
+      </div>
+      <div class="service-card">
+        <i class="bi bi-activity"></i>
+        <h3>Monitoreo en Línea</h3>
+        <p>Revisa tus controles, informes y resultados de laboratorio online.</p>
+      </div>
+      <div class="service-card">
+        <i class="bi bi-chat-heart"></i>
+        <h3>Orientación Médica Virtual</h3>
+        <p>Consulta médica rápida y orientación por videollamada o chat.</p>
+      </div>
+      <div class="service-card">
+        <i class="bi bi-geo-alt"></i>
+        <h3>Clínicas Cercanas</h3>
+        <p>Ubica los centros médicos y laboratorios afiliados más próximos a ti.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-section">
+      <h3>Sobre Nosotros</h3>
+      <p>Somos una plataforma médica especializada en reservas de citas, atención virtual y control de servicios médicos.</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Enlaces</h3>
+      <ul>
+        <li><a routerLink="/reservas">Reservar Cita</a></li>
+        <li><a routerLink="/perfil">Mi Perfil</a></li>
+        <li><a routerLink="/historial">Historial</a></li>
+        <li><a routerLink="/informes">Informes</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contacto</h3>
+      <p><i class="bi bi-telephone"></i> +51 999 123 456</p>
+      <p><i class="bi bi-envelope"></i> soporteAreservamed.pe</p>
+      <p><i class="bi bi-geo-alt"></i> Lima, Perú</p>
+    </div>
+
+    <div class="footer-copy">
+      <p>&copy; 2025 ReservaMed | Todos los derechos reservados.</p>
+    </div>
+  </footer>
+</div>
