@@ -1,0 +1,21 @@
+# Carpeta: /src/app/admin/pages/
+
+Esta carpeta contiene todas las páginas que serán visibles y accesibles únicamente para los administradores del sistema.
+
+## Propósito
+Centralizar y organizar los componentes de páginas exclusivas para la administración, facilitando el mantenimiento y la escalabilidad del proyecto.
+
+## Recomendaciones
+- Cada página debe estar en un subdirectorio propio si requiere componentes, estilos o lógica específica.
+- Usar nombres descriptivos para cada archivo y carpeta.
+- Documentar brevemente la funcionalidad de cada página en su archivo correspondiente.
+
+## Ejemplo de estructura
+/
+├── dashboard/         # Panel principal del administrador
+├── users/             # Gestión de usuarios
+├── reports/           # Reportes y estadísticas
+└── settings/          # Configuración del sistema
+
+## Notas
+No incluir aquí páginas públicas o de otros roles. Mantener esta carpeta exclusiva para la administración.

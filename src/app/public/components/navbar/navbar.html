@@ -1,0 +1,45 @@
+<header class="main-header">
+  <nav class="navbar">
+    <!-- Logo y nombre del sistema -->
+    <div class="logo-section">
+      <img src="https://clinicalosfresnos.com.pe/wp-content/uploads/2023/09/Doc1-640x638.png" alt="Logo" class="nav-logo">
+      <span class="system-name">Citas Médicas</span>
+    </div>
+
+    <!-- Menú de navegación -->
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <i class="fa-solid fa-house fa-fw"></i> Inicio
+        </a>
+      </li>
+
+      <li *ngIf="isLoggedIn()">
+        <a routerLink="/IndexDash" routerLinkActive="active">
+          <i class="fa-solid fa-user-doctor fa-fw"></i> Dashboard
+        </a>
+      </li>
+
+      <li *ngIf="!isLoggedIn()">
+        <a routerLink="/login" routerLinkActive="active">
+          <i class="fa-solid fa-user fa-fw"></i> Iniciar Sesión
+        </a>
+      </li>
+
+      <li *ngIf="isLoggedIn()">
+        <a (click)="logout()" style="cursor: pointer;">
+          <i class="fa-solid fa-right-from-bracket fa-fw"></i> Salir
+        </a>
+      </li>
+    </ul>
+
+    <!-- Botón de cambio de modo -->
+    <button class="mode-toggle" type="button" (click)="toggleMode()">
+      {{ isDarkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro' }}
+    </button>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

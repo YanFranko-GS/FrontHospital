@@ -1,0 +1,5 @@
+/**
+ * La carpeta `component` contiene los componentes reutilizables utilizados para construir el navbar del administrador.
+ * Aquí se agrupan todos los elementos relacionados con la navegación administrativa, facilitando su mantenimiento y escalabilidad.
+ * Se recomienda mantener en esta carpeta únicamente los componentes específicos del navbar del panel de administración.
+ */

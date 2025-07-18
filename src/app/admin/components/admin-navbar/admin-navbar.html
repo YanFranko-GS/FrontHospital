@@ -1,0 +1,56 @@
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <i class="logo-icon">🐦‍🔥</i>
+      <span style="color: white;">yan-franko</span>
+    </div>
+    <br>
+    <nav class="nav-menu">
+      <a routerLink="/admin" class="nav-item"><i class="icon">📊</i> Dashboard</a>
+      
+      <a routerLink="/admin/ADpacientes" class="nav-item"><i class="icon">👥</i> Pacientes</a>
+      
+      <a routerLink="/admin/ADmedicos" class="nav-item"><i class="icon">🧑‍⚕️</i> Médicos</a>
+      
+      <a routerLink="/admin/ADservicios" class="nav-item"><i class="icon">🩺</i> Servicios Medidicos</a>
+      
+      <a routerLink="/admin/ADhorarios" class="nav-item"><i class="icon">🕒</i> Horarios</a>
+      
+      <a routerLink="/admin/ADcitas" class="nav-item"><i class="icon">📅</i> Citas</a>
+      
+      <a routerLink="/admin/ADconfiguracion" class="nav-item"><i class="icon">⚙️</i> Configuración</a>
+      <br><br><br><br>
+      <div class="centrar">
+        <a (click)="logout()" class="nav-item"><i class="icon">⏻</i> Cerrar Sesión</a>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+      <div class="left-section">
+        <i class="menu-toggle" >☰</i>
+        <input type="text" placeholder="Buscar..." class="search-bar" />
+      </div>
+      <div class="right-section">
+        <i class="icon">🌐</i>
+        <i class="icon">🔔</i>
+        <i class="icon">📩</i>
+        <div class="profile">
+          <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" alt="Admin" />
+          <span style="color: white; height: 15px;">{{ adminNombre }}</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <main class="page-content">
+      <div class="dynamic-content">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>

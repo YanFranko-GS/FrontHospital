@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PacienteService } from '../../services/pacientes.service';
+import { PacienteService } from '../../../shared/services/pacientes.service';
 
 @Component({
   selector: 'app-pacientes',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './pacientes.html',
-  styleUrls: ['./pacientes.css']
+  templateUrl: './admin-paciente.html',
+  styleUrls: ['./admin-paciente.css']
 })
-export class PacientesComponent implements OnInit {
+export class ADPacientesComponent implements OnInit {
 
   pacientes: any[] = [];
   pacienteNuevo: any = this.inicializarPaciente();

@@ -1,0 +1,16 @@
+La carpeta `shared` está destinada a contener todos los recursos reutilizables 
+y compartidos dentro de la aplicación. Aquí se almacenarán componentes, servicios, 
+directivas, pipes y utilidades que pueden ser usados en diferentes módulos o 
+partes del proyecto. El objetivo es centralizar y organizar estos elementos 
+para evitar duplicidad de código y facilitar el mantenimiento y escalabilidad 
+de la aplicación en el futuro.
+
+En resumen:
+- Componentes reutilizables (botones, modales, tablas, etc.)
+- Servicios comunes (autenticación, notificaciones, utilidades)
+- Directivas y pipes personalizados
+- Archivos de estilos globales o constantes
+
+Todo lo que se coloque aquí debe ser genérico y no depender de una funcionalidad específica de un módulo.
+
+## La estructura de mi proyecto es: <"Modular Feature-based Folder Structure"> ##

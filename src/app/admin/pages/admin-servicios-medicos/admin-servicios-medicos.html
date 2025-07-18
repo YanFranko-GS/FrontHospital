@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <h2>{{ servicioEditando ? 'Editar Servicio Médico' : 'Nuevo Servicio Médico' }}</h2>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+      <label class="form-label">Nombre del Servicio</label>
+      <input type="text" class="form-control" [(ngModel)]="modeloServicio.nombreServicio" name="nombreServicio" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Precio (S/)</label>
+      <input type="number" class="form-control" [(ngModel)]="modeloServicio.precio" name="precio" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Duración (minutos)</label>
+      <input type="number" class="form-control" [(ngModel)]="modeloServicio.duracion" name="duracion" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea class="form-control" [(ngModel)]="modeloServicio.descripcion" name="descripcion" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Estado</label>
+      <select class="form-control" [(ngModel)]="modeloServicio.estado" name="estado" required>
+        <option value="">Seleccionar</option>
+        <option value="Activo">Activo</option>
+        <option value="Inactivo">Inactivo</option>
+        <option value="Inactivo">Suspendido</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid">
+      {{ servicioEditando ? 'Guardar Cambios' : 'Agregar Servicio' }}
+    </button>
+    <button *ngIf="servicioEditando" type="button" class="btn btn-secondary ms-2"
+      (click)="cancelarEdicion()">Cancelar</button>
+  </form>
+
+  <hr class="my-4">
+
+  <h3 style="color: white;">Lista de Servicios Médicos</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre Servicio</th>
+        <th>Precio (S/)</th>
+        <th>Duración (min)</th>
+        <th>Descripción</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let servicio of servicios">
+        <td>{{ servicio.idServicio }}</td>
+        <td>{{ servicio.nombreServicio }}</td>
+        <td>{{ servicio.precio | currency:'PEN' }}</td>
+        <td>{{ servicio.duracion }}</td>
+        <td>{{ servicio.descripcion }}</td>
+        <td>{{ servicio.estado }}</td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="cargarServicio(servicio.idServicio)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarServicio(servicio.idServicio)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

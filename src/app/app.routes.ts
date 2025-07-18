@@ -1,14 +1,41 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { AdminDashboardComponent } from './components/dash-admin/dash-admin';
-import { authGuard } from './guards/auth.guard';
-import { HomeComponent } from './components/home/home.component';                                                                                                         
-import { PacientesComponent } from './components/pacientes/pacientes';
-   
+import { LoginComponent } from './public/pages/login/login.component';
+import { AdminNavbarComponents } from './admin/components/admin-navbar/admin-navbar';
+import { authGuard } from './shared/guards/auth.guard';
+import { HomeComponent } from './public/pages/home/home.component';                                                                                                       
+import { ADPacientesComponent } from './admin/pages/admin-paciente/admin-paciente';
+import { AdminMedico } from './admin/pages/admin-medico/admin-medico';
+import { NavbarComponent } from './public/components/navbar/navbar';
+import { DashboardComponent } from './admin/pages/dashboard/dashboard';
+import { CommonModule } from '@angular/common';
+import { AdminServiciosMedicosComponent } from './admin/pages/admin-servicios-medicos/admin-servicios-medicos';
+import { AdminHorariosDisponibles } from './admin/pages/admin-horarios-disponibles/admin-horarios-disponibles';
+
+
+
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'IndexDash', component: AdminDashboardComponent, canActivate: [authGuard] },
-  { path: 'Paciente', component: PacientesComponent, canActivate: [authGuard] },
-  { path: '', component: HomeComponent, canActivate: [authGuard] },
+
+  {
+    path: '',
+    component: NavbarComponent,  // navbar y footer de usuario normal
+    children: [
+      { path: '', component: HomeComponent },
+     { path: 'login', component: LoginComponent },
+      // otras públicas...
+    ]
+  },
+  {
+    path: 'admin',
+    component: AdminNavbarComponents,  // sidebar y topbar admin
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'ADpacientes', component: ADPacientesComponent },
+      { path: 'ADmedicos', component: AdminMedico },
+      { path: 'ADservicios', component: AdminServiciosMedicosComponent },
+      { path: 'ADhorarios', component: AdminHorariosDisponibles },
+      // más admin...
+    ]
+  },
   { path: '**', redirectTo: '' }
 ];

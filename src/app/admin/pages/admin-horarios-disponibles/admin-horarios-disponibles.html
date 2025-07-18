@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <h2>{{ horarioEditando ? 'Editar Horario Disponible' : 'Nuevo Horario Disponible' }}</h2>
+
+  <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="mb-3">
+      <label class="form-label">Fecha de Disponibilidad</label>
+      <input type="date" class="form-control" [(ngModel)]="modeloHorario.fechaDisponibilidad" name="fechaDisponibilidad" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Hora de Inicio</label>
+      <input type="time" class="form-control" [(ngModel)]="modeloHorario.horaInicio" name="horaInicio" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Hora de Fin</label>
+      <input type="time" class="form-control" [(ngModel)]="modeloHorario.horaFin" name="horaFin" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Estado</label>
+      <select class="form-control" [(ngModel)]="modeloHorario.estado" name="estado" required>
+        <option value="">Seleccionar</option>
+        <option value="Disponible">Disponible</option>
+        <option value="Ocupado">Ocupado</option>
+        <option value="Cancelado">Cancelado</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+    <label class="form-label">Servicio Médico</label>
+    <select class="form-control" [(ngModel)]="modeloHorario.servicioMedico.idServicio" name="servicioMedico" required>
+      <option value="">Seleccionar Servicio</option>
+      <option *ngFor="let servicio of serviciosMedicos" [value]="servicio.idServicio">
+        {{ servicio.nombreServicio }}
+      </option>
+    </select>
+  </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="!form.valid">
+      {{ horarioEditando ? 'Guardar Cambios' : 'Agregar Horario' }}
+    </button>
+    <button *ngIf="horarioEditando" type="button" class="btn btn-secondary ms-2" (click)="cancelarEdicion()">Cancelar</button>
+  </form>
+
+  <hr class="my-4">
+
+  <h3 style="color: white;">Lista de Horarios Disponibles</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Fecha</th>
+        <th>Hora Inicio</th>
+        <th>Hora Fin</th>
+        <th>Estado</th>
+        <th>Servicio Medico</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let horario of horarios">
+        <td>{{ horario.idHorario }}</td>
+        <td>{{ horario.fechaDisponibilidad }}</td>
+        <td>{{ horario.horaInicio }}</td>
+        <td>{{ horario.horaFin }}</td>
+        <td>{{ horario.estado }}</td>
+        <td>{{ horario.servicioMedico?.nombreServicio || 'N/A' }}</td>
+        <td>
+          <button class="btn btn-success btn-sm" (click)="cargarHorario(horario.idHorario)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="eliminarHorario(horario.idHorario)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
