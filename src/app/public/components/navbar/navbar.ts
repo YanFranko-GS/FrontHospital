@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { TokenStorageService } from '../../../shared/services/token-storage.service';
 
-
 @Component({
   selector: 'app-public-navbar',
   standalone: true,
@@ -11,12 +10,13 @@ import { TokenStorageService } from '../../../shared/services/token-storage.serv
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css'],
   template: `
-    
     <router-outlet></router-outlet>
   `
 })
 export class NavbarComponent {
   title = 'angular-jwt-login';
+  isDarkMode = false;
+  showMobileMenu = false;
 
   constructor(private tokenStorage: TokenStorageService) {}
 
@@ -29,13 +29,14 @@ export class NavbarComponent {
     window.location.reload();
   }
 
-  isDarkMode = false;
-
-toggleMode() {
-  this.isDarkMode = !this.isDarkMode;
-  document.body.classList.toggle('dark-mode', this.isDarkMode);
-}
-
+  toggleMode() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
 }
 
 

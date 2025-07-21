@@ -1,53 +1,47 @@
-<div class="admin-layout">
+<div class="flex min-h-screen bg-blue-50">
   <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="logo">
-      <i class="logo-icon">🐦‍🔥</i>
-      <span style="color: white;">yan-franko</span>
-    </div>
-    <br>
-    <nav class="nav-menu">
-      <a routerLink="/admin" class="nav-item"><i class="icon">📊</i> Dashboard</a>
-      
-      <a routerLink="/admin/ADpacientes" class="nav-item"><i class="icon">👥</i> Pacientes</a>
-      
-      <a routerLink="/admin/ADmedicos" class="nav-item"><i class="icon">🧑‍⚕️</i> Médicos</a>
-      
-      <a routerLink="/admin/ADservicios" class="nav-item"><i class="icon">🩺</i> Servicios Medidicos</a>
-      
-      <a routerLink="/admin/ADhorarios" class="nav-item"><i class="icon">🕒</i> Horarios</a>
-      
-      <a routerLink="/admin/ADcitas" class="nav-item"><i class="icon">📅</i> Citas</a>
-      
-      <a routerLink="/admin/ADconfiguracion" class="nav-item"><i class="icon">⚙️</i> Configuración</a>
-      <br><br><br><br>
-      <div class="centrar">
-        <a (click)="logout()" class="nav-item"><i class="icon">⏻</i> Cerrar Sesión</a>
+  <aside class="w-64 bg-gradient-to-b from-blue-700 to-teal-600 text-white flex flex-col justify-between py-6 px-4 shadow-lg">
+    <div>
+      <div class="flex items-center gap-3 mb-8">
+        <span class="text-3xl">🏥</span>
+        <span class="text-2xl font-bold tracking-wide">Clínica Vida</span>
       </div>
-    </nav>
+      <nav class="flex flex-col gap-2">
+        <a routerLink="/admin" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">📊</span> Dashboard</a>
+        <a routerLink="/admin/ADpacientes" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">🧑‍🤝‍🧑</span> Pacientes</a>
+        <a routerLink="/admin/ADmedicos" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">🩺</span> Médicos</a>
+        <a routerLink="/admin/ADservicios" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">💉</span> Servicios Médicos</a>
+        <a routerLink="/admin/ADhorarios" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">🕒</span> Horarios</a>
+        <a routerLink="/admin/ADcitas" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">📅</span> Citas</a>
+        <a routerLink="/admin/ADconfiguracion" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">⚙️</span> Configuración</a>
+      </nav>
+    </div>
+    <div class="mt-8">
+      <button (click)="logout()" class="w-full flex items-center gap-3 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition text-white font-semibold"><span class="text-xl">⏻</span> Cerrar Sesión</button>
+    </div>
   </aside>
 
   <!-- Main Content -->
-  <div class="main-content">
+  <div class="flex-1 flex flex-col">
     <!-- Top Navbar -->
-    <header class="top-navbar">
-      <div class="left-section">
-        <i class="menu-toggle" >☰</i>
-        <input type="text" placeholder="Buscar..." class="search-bar" />
+    <header class="flex items-center justify-between bg-white shadow px-8 py-4">
+      <div class="flex items-center gap-4">
+        <button class="text-2xl text-blue-700 focus:outline-none">☰</button>
+        <input type="text" placeholder="Buscar..." class="border border-blue-200 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400" />
       </div>
-      <div class="right-section">
-        <i class="icon">🌐</i>
-        <i class="icon">🔔</i>
-        <i class="icon">📩</i>
-        <div class="profile">
-          <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" alt="Admin" />
-          <span style="color: white; height: 15px;">{{ adminNombre }}</span>
+      <div class="flex items-center gap-6">
+        <span class="text-2xl text-blue-700">🌐</span>
+        <span class="text-2xl text-blue-700">🔔</span>
+        <span class="text-2xl text-blue-700">📩</span>
+        <div class="flex items-center gap-2 bg-blue-100 rounded-full px-3 py-1">
+          <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" alt="Admin" class="w-8 h-8 rounded-full border-2 border-blue-400" />
+          <span class="text-blue-900 font-semibold">{{ adminNombre }}</span>
         </div>
       </div>
     </header>
 
     <!-- Content Area -->
-    <main class="page-content">
+    <main class="flex-1 p-8 bg-blue-50">
       <div class="dynamic-content">
         <router-outlet></router-outlet>
       </div>
