@@ -10,7 +10,7 @@ import { DashboardComponent } from './admin/pages/dashboard/dashboard';
 import { CommonModule } from '@angular/common';
 import { AdminServiciosMedicosComponent } from './admin/pages/admin-servicios-medicos/admin-servicios-medicos';
 import { AdminHorariosDisponibles } from './admin/pages/admin-horarios-disponibles/admin-horarios-disponibles';
-
+import { RegisterComponent } from './public/pages/register/register.component';
 
 
 export const routes: Routes = [
@@ -21,6 +21,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
       // otras públicas...
     ]
   },

@@ -16,6 +16,10 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, credentials);
   }
 
+  register(data: { nombreUsuario: string; correoElectronico: string; contrasena: string }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, data);
+  }
+
 //  obtenerPerfil(): Observable<UsuarioResponse> {
 //    return this.http.get<UsuarioResponse>(`${environment.apiUrl}/usuarios/perfil`);
 //  }

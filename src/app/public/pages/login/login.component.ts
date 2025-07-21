@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../shared/services/auth.service';
 import { TokenStorageService } from '../../../shared/services/token-storage.service';
 import { CommonModule } from '@angular/common';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -13,16 +14,27 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  animations: [
+    trigger('fadeInOut', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(10px)' }),
+        animate('400ms cubic-bezier(.4,0,.2,1)', style({ opacity: 1, transform: 'translateY(0)' }))
+      ]),
+      transition(':leave', [
+        animate('300ms cubic-bezier(.4,0,.2,1)', style({ opacity: 0, transform: 'translateY(-10px)' }))
+      ])
+    ])
+  ]
 })
 export class LoginComponent {
   loginForm;
+  showPassword = false;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
-    private router: Router
+    public router: Router
   ) {
     this.loginForm = this.fb.group({
       nombreOrCorreo: ['', [Validators.required]],
