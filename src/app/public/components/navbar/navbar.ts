@@ -18,7 +18,16 @@ export class NavbarComponent {
   isDarkMode = false;
   showMobileMenu = false;
 
-  constructor(private tokenStorage: TokenStorageService) {}
+  constructor(private tokenStorage: TokenStorageService) {
+    // Leer preferencia de tema al iniciar
+    const darkPref = localStorage.getItem('isDarkMode');
+    this.isDarkMode = darkPref === 'true';
+    if (this.isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }
 
   isLoggedIn(): boolean {
     return !!this.tokenStorage.getToken();
@@ -31,6 +40,7 @@ export class NavbarComponent {
 
   toggleMode() {
     this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('isDarkMode', String(this.isDarkMode));
     if (this.isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
