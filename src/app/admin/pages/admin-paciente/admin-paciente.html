@@ -1,104 +1,143 @@
-<div class="container mt-4">
-    <h2>{{ pacienteEditando ? 'Editar Paciente' : 'Nuevo Paciente' }}</h2>
+<div class="container mx-auto px-4 py-6">
+  <!-- Formulario -->
+  <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+    <div class="p-6 bg-gradient-to-r from-blue-600 to-teal-500">
+      <h2 class="text-2xl font-bold text-white">
+        {{ pacienteEditando ? '✏️ Editar Paciente' : '➕ Nuevo Paciente' }}
+      </h2>
+    </div>
+    
+    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate class="p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Columna 1 -->
+        <div class="space-y-4">
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Nombre Completo</label>
+            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloPaciente.nombreCompleto" name="nombreCompleto" required>
+          </div>
 
-    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate>
-        <div class="mb-3">
-            <label class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" [(ngModel)]="modeloPaciente.nombreCompleto" name="nombreCompleto"
-                required>
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Fecha de Nacimiento</label>
+            <input type="date" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloPaciente.fechaNacimiento" name="fechaNacimiento" required>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloPaciente.correoElectronico" name="correoElectronico" required>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Teléfono</label>
+            <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloPaciente.telefono" name="telefono" required>
+          </div>
         </div>
 
-        <div class="mb-3">
-            <label class="form-label">Fecha de Nacimiento</label>
-            <input type="date" class="form-control" [(ngModel)]="modeloPaciente.fechaNacimiento" name="fechaNacimiento"
-                required>
-        </div>
+        <!-- Columna 2 -->
+        <div class="space-y-4">
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Dirección</label>
+            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloPaciente.direccion" name="direccion" required>
+          </div>
 
-        <div class="mb-3">
-            <label class="form-label">Correo Electrónico</label>
-            <input type="email" class="form-control" [(ngModel)]="modeloPaciente.correoElectronico"
-                name="correoElectronico" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Teléfono</label>
-            <input type="tel" class="form-control" [(ngModel)]="modeloPaciente.telefono" name="telefono" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Dirección</label>
-            <input type="text" class="form-control" [(ngModel)]="modeloPaciente.direccion" name="direccion" required>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Sexo</label>
-            <select class="form-control" [(ngModel)]="modeloPaciente.sexo" name="sexo" required>
-                <option value="">Seleccionar</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-                <option value="No Binario">No Binario</option>
-                <option value="Prefiero no decir">Prefiero no decir</option>
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Sexo</label>
+            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    [(ngModel)]="modeloPaciente.sexo" name="sexo" required>
+              <option value="">Seleccionar</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+              <option value="No Binario">No Binario</option>
+              <option value="Prefiero no decir">Prefiero no decir</option>
             </select>
-        </div>
+          </div>
 
-        <div class="mb-3">
-            <label class="form-label">Tipo de Documento</label>
-            <select class="form-control" [(ngModel)]="modeloPaciente.tipoDocumento" name="tipoDocumento" required>
-                <option value="">Seleccionar</option>
-                <option value="DNI">DNI</option>
-                <option value="Carné de extranjería">Carné de extranjería</option>
-                <option value="Cédula de identidad">Cédula de identidad</option>
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de Documento</label>
+            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    [(ngModel)]="modeloPaciente.tipoDocumento" name="tipoDocumento" required>
+              <option value="">Seleccionar</option>
+              <option value="DNI">DNI</option>
+              <option value="Carné de extranjería">Carné de extranjería</option>
+              <option value="Cédula de identidad">Cédula de identidad</option>
             </select>
-        </div>
+          </div>
 
-        <div class="mb-3">
-            <label class="form-label">Número de Documento</label>
-            <input type="text" class="form-control" [(ngModel)]="modeloPaciente.numeroDocumento" name="numeroDocumento"
-                required>
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Número de Documento</label>
+            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloPaciente.numeroDocumento" name="numeroDocumento" required>
+          </div>
         </div>
+      </div>
 
-        <button type="submit" class="btn btn-success" [disabled]="!form.valid">
-            {{ pacienteEditando ? 'Guardar Cambios' : 'Agregar Paciente' }}
+      <div class="mt-6 flex justify-end space-x-3">
+        <button *ngIf="pacienteEditando" type="button" 
+                class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+                (click)="cancelarEdicion()">
+          Cancelar
         </button>
-        <button *ngIf="pacienteEditando" type="button" class="btn btn-secondary ms-2"
-            (click)="cancelarEdicion()">Cancelar</button>
+        <button type="submit" 
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                [disabled]="!form.valid">
+          {{ pacienteEditando ? '💾 Guardar Cambios' : '➕ Agregar Paciente' }}
+        </button>
+      </div>
     </form>
+  </div>
 
-    <hr class="my-4">
-
-    <h3 style="color: white;">Lista de Pacientes</h3>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Sexo</th>
-                <th>Fecha Nacimiento</th>
-                <th>Tipo de Documento</th>
-                <th>Documento</th>
-                <th>Teléfono</th>
-                <th>Correo</th>
-                <th>Dirección</th>
-                <th>Acciones</th>
-            </tr>
+  <!-- Lista de Pacientes -->
+  <div class="bg-white rounded-xl shadow-md overflow-hidden">
+    <div class="p-6 bg-gradient-to-r from-blue-600 to-teal-500">
+      <h3 class="text-2xl font-bold text-white">📋 Lista de Pacientes</h3>
+    </div>
+    
+    <div class="overflow-x-auto p-4">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sexo</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Nac.</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Documento</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Teléfono</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+          </tr>
         </thead>
-        <tbody>
-            <tr *ngFor="let paciente of pacientes">
-                <td>{{ paciente.idPaciente }}</td>
-                <td>{{ paciente.nombreCompleto }}</td>
-                <td>{{ paciente.sexo }}</td>
-                <td>{{ paciente.fechaNacimiento | date:'yyyy-MM-dd' }}</td>
-                <td>{{ paciente.tipoDocumento }}</td>
-                <td>{{ paciente.numeroDocumento }}</td>
-                <td>{{ paciente.telefono }}</td>
-                <td>{{ paciente.correoElectronico }}</td>
-                <td>{{ paciente.direccion }}</td>
-                <td>
-                    <button class="btn btn-success btn-sm" (click)="cargarPaciente(paciente.idPaciente)">Editar</button>
-                    <button class="btn btn-danger btn-sm"
-                        (click)="eliminarPaciente(paciente.idPaciente)">Eliminar</button>
-                </td>
-            </tr>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr *ngFor="let paciente of pacientes" class="hover:bg-gray-50 transition">
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ paciente.idPaciente }}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm font-medium text-gray-900">{{ paciente.nombreCompleto }}</div>
+              <div class="text-sm text-gray-500">{{ paciente.correoElectronico }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ paciente.sexo }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ paciente.fechaNacimiento | date:'yyyy-MM-dd' }}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm text-gray-500">{{ paciente.tipoDocumento }}</div>
+              <div class="text-sm font-medium text-gray-900">{{ paciente.numeroDocumento }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ paciente.telefono }}</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <div class="flex space-x-2">
+                <button (click)="cargarPaciente(paciente.idPaciente)" 
+                        class="text-blue-600 hover:text-blue-900 px-2 py-1 rounded hover:bg-blue-50 transition">
+                  ✏️ Editar
+                </button>
+                <button (click)="eliminarPaciente(paciente.idPaciente)" 
+                        class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 transition">
+                  🗑️ Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
         </tbody>
-    </table>
+      </table>
+    </div>
+  </div>
 </div>

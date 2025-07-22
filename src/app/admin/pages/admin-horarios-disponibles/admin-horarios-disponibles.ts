@@ -101,4 +101,13 @@ export class AdminHorariosDisponibles implements OnInit {
     this.horarioEditando = null;
   }
 
+  calcularDuracion(horaInicio: string, horaFin: string): number {
+    if (!horaInicio || !horaFin) return 0;
+    const [hIni, mIni] = horaInicio.split(':').map(Number);
+    const [hFin, mFin] = horaFin.split(':').map(Number);
+    const inicio = hIni * 60 + mIni;
+    const fin = hFin * 60 + mFin;
+    return Math.max(0, fin - inicio);
+  }
+
 }

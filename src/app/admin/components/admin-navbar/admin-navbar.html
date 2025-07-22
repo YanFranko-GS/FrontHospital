@@ -1,50 +1,89 @@
-<div class="flex min-h-screen bg-blue-50">
+<div class="flex min-h-screen bg-gradient-to-br from-blue-50 via-cyan-50 to-teal-100">
   <!-- Sidebar -->
-  <aside class="w-64 bg-gradient-to-b from-blue-700 to-teal-600 text-white flex flex-col justify-between py-6 px-4 shadow-lg">
+  <aside class="w-72 bg-gradient-to-b from-blue-800 to-teal-600 text-white flex flex-col justify-between py-8 px-6 shadow-2xl rounded-br-3xl">
     <div>
-      <div class="flex items-center gap-3 mb-8">
-        <span class="text-3xl">🏥</span>
-        <span class="text-2xl font-bold tracking-wide">Clínica Vida</span>
+      <div class="flex flex-col items-center mb-10">
+        <div class="bg-white rounded-full p-2 shadow-lg mb-3">
+          <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" alt="Logo Clínica" class="w-16 h-16 rounded-full" />
+        </div>
+        <span class="text-3xl font-extrabold tracking-wide text-white drop-shadow-lg">Clínica Vida</span>
+        <span class="text-sm text-blue-200 mt-1">Salud y Bienestar</span>
       </div>
-      <nav class="flex flex-col gap-2">
-        <a routerLink="/admin" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">📊</span> Dashboard</a>
-        <a routerLink="/admin/ADpacientes" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">🧑‍🤝‍🧑</span> Pacientes</a>
-        <a routerLink="/admin/ADmedicos" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">🩺</span> Médicos</a>
-        <a routerLink="/admin/ADservicios" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">💉</span> Servicios Médicos</a>
-        <a routerLink="/admin/ADhorarios" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">🕒</span> Horarios</a>
-        <a routerLink="/admin/ADcitas" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">📅</span> Citas</a>
-        <a routerLink="/admin/ADconfiguracion" class="flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-blue-800 transition"><span class="text-xl">⚙️</span> Configuración</a>
+      <nav class="flex flex-col gap-3 mt-8">
+        <a routerLink="/admin" class="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-blue-900/80 transition font-medium text-lg"><span class="text-2xl">📊</span> Dashboard</a>
+        <a routerLink="/admin/ADpacientes" class="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-blue-900/80 transition font-medium text-lg"><span class="text-2xl">🧑‍🤝‍🧑</span> Pacientes</a>
+        <a routerLink="/admin/ADmedicos" class="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-blue-900/80 transition font-medium text-lg"><span class="text-2xl">🩺</span> Médicos</a>
+        <a routerLink="/admin/ADservicios" class="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-blue-900/80 transition font-medium text-lg"><span class="text-2xl">💉</span> Servicios</a>
+        <a routerLink="/admin/ADhorarios" class="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-blue-900/80 transition font-medium text-lg"><span class="text-2xl">🕒</span> Horarios</a>
+        <a routerLink="/admin/ADcitas" class="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-blue-900/80 transition font-medium text-lg"><span class="text-2xl">📅</span> Citas</a>
+        <a routerLink="/admin/ADconfiguracion" class="flex items-center gap-4 px-5 py-3 rounded-xl hover:bg-blue-900/80 transition font-medium text-lg"><span class="text-2xl">⚙️</span> Configuración</a>
       </nav>
     </div>
-    <div class="mt-8">
-      <button (click)="logout()" class="w-full flex items-center gap-3 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-700 transition text-white font-semibold"><span class="text-xl">⏻</span> Cerrar Sesión</button>
+    <div class="mt-10 flex justify-center">
+      <button
+        (click)="logout()"
+        class="w-full max-w-xs flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-red-500 to-pink-400 hover:from-red-600 hover:to-pink-500 transition-all duration-300 text-white font-semibold text-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-red-300"
+        style="box-shadow: 0 4px 24px 0 rgba(220,38,38,0.15);"
+      >
+        <span class="flex items-center justify-center w-10 h-10 rounded-full bg-white/20 border border-white/30 shadow-inner">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H7a2 2 0 01-2-2V7a2 2 0 012-2h4a2 2 0 012 2v1" />
+          </svg>
+        </span>
+        <span>Cerrar Sesión</span>
+      </button>
     </div>
   </aside>
 
   <!-- Main Content -->
-  <div class="flex-1 flex flex-col">
-    <!-- Top Navbar -->
-    <header class="flex items-center justify-between bg-white shadow px-8 py-4">
-      <div class="flex items-center gap-4">
-        <button class="text-2xl text-blue-700 focus:outline-none">☰</button>
-        <input type="text" placeholder="Buscar..." class="border border-blue-200 rounded px-3 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+<div class="flex-1 flex flex-col">
+  <!-- Top Navbar - Más moderno y minimalista -->
+  <header class="flex items-center justify-between bg-white px-8 py-6 border-b border-gray-100">
+    <div class="flex items-center gap-2">
+      <button class="text-teal-600 hover:bg-teal-50 rounded-lg p-2 transition-all duration-200" title="Menú">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <input
+        type="text"
+        placeholder="Buscar paciente, médico, cita..."
+        class="border-none bg-gray-50 rounded-xl px-4 py-2 focus:outline-none focus:ring-1 focus:ring-teal-400 text-gray-700 w-72 shadow-sm transition-all placeholder:text-gray-400 text-sm"
+      />
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <button class="text-gray-500 hover:bg-gray-50 rounded-lg p-2 transition-all" title="Idioma">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+      </button>
+      <button class="text-gray-500 hover:bg-gray-50 rounded-lg p-2 transition-all relative" title="Notificaciones">
+        <div class="absolute -top-1 -right-1 w-2 h-2 bg-teal-500 rounded-full"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V4a2 2 0 10-4 0v1.341C7.67 7.165 6 9.388 6 12v2.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="text-gray-500 hover:bg-gray-50 rounded-lg p-2 transition-all" title="Mensajes">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path d="M21 12.5a8.38 8.38 0 01-1.9.5 8.5 8.5 0 11-7.6-7.6c.2-.1.4-.1.5-.1a8.5 8.5 0 018.5 8.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M8 12l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <div class="flex items-center gap-2 bg-white rounded-xl px-3 py-1 shadow-sm border border-gray-200 hover:shadow transition-all cursor-pointer">
+        <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" alt="Admin" class="w-7 h-7 rounded-full border-2 border-teal-400 object-cover" />
+        <span class="text-gray-700 font-medium text-sm">{{ adminNombre }}</span>
       </div>
-      <div class="flex items-center gap-6">
-        <span class="text-2xl text-blue-700">🌐</span>
-        <span class="text-2xl text-blue-700">🔔</span>
-        <span class="text-2xl text-blue-700">📩</span>
-        <div class="flex items-center gap-2 bg-blue-100 rounded-full px-3 py-1">
-          <img src="https://cdn-icons-png.flaticon.com/512/2206/2206368.png" alt="Admin" class="w-8 h-8 rounded-full border-2 border-blue-400" />
-          <span class="text-blue-900 font-semibold">{{ adminNombre }}</span>
-        </div>
-      </div>
-    </header>
+    </div>
+  </header>
 
-    <!-- Content Area -->
-    <main class="flex-1 p-8 bg-blue-50">
-      <div class="dynamic-content">
-        <router-outlet></router-outlet>
-      </div>
-    </main>
-  </div>
+  <!-- Content Area - Más limpio y con mejor gradiente -->
+  <main class="flex-1 p-6 bg-gradient-to-br from-white via-blue-50 to-teal-50">
+    <div class="dynamic-content rounded-xl">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>
 </div>
