@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NoticiasBlogComponent } from '../../components/noticias-blog/noticias-blog.component';
 import { MapaUbicacionComponent } from '../../components/mapa-ubicacion/mapa-ubicacion.component';
 import { TestimoniosComponent } from '../../components/testimonios/testimonios.component';
+import { Footer } from "../../components/footer/footer";
 
 @Component({
   selector: 'app-home',
@@ -11,8 +12,9 @@ import { TestimoniosComponent } from '../../components/testimonios/testimonios.c
     CommonModule,
     NoticiasBlogComponent,
     MapaUbicacionComponent,
-    TestimoniosComponent
-  ],
+    TestimoniosComponent,
+    Footer
+],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

@@ -5,13 +5,17 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { TokenStorageService } from '../../../shared/services/token-storage.service';
 import { CommonModule } from '@angular/common';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Footer } from '../../components/footer/footer';
+
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Footer
   ],
   templateUrl: './login.component.html',
   animations: [
@@ -62,15 +66,15 @@ export class LoginComponent {
 
           // Decodificar y obtener el rol
           const userRole = this.tokenStorage.getUserRole();
-console.log('Rol decodificado:', userRole);
+          console.log('Rol decodificado:', userRole);
 
-if (userRole === 'ROLE_ADMIN') {
-  this.router.navigate(['/admin']);
-} else if (userRole === 'ROLE_USER') {
-  this.router.navigate(['/']);
-} else {
-  this.router.navigate(['/']);
-}
+          if (userRole === 'ROLE_ADMIN') {
+            this.router.navigate(['/admin']);
+          } else if (userRole === 'ROLE_USER') {
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate(['/']);
+          }
         },
         error: (err) => {
           console.error(err);

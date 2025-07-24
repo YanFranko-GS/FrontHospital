@@ -1,0 +1,181 @@
+<div class="container mx-auto px-4 py-6">
+  <!-- Formulario -->
+  <div class="bg-white rounded-xl shadow-md overflow-hidden mb-8">
+    <div class="p-6 bg-gradient-to-r from-blue-600 to-teal-500">
+      <h2 class="text-2xl font-bold text-white">
+        {{ citaEditando ? '✏️ Editar Cita Médica' : '➕ Nueva Cita Médica' }}
+      </h2>
+    </div>
+    
+    <form #form="ngForm" (ngSubmit)="onSubmit()" novalidate class="p-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Columna 1 -->
+        <div class="space-y-4">
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Fecha y Hora</label>
+            <input type="datetime-local" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloCita.fechaHora" name="fechaHora" required>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Motivo</label>
+            <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                   [(ngModel)]="modeloCita.motivo" name="motivo" required>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    [(ngModel)]="modeloCita.estado" name="estado" required>
+              <option value="">Seleccione estado</option>
+              <option value="Pendiente">Pendiente</option>
+              <option value="Confirmada">Confirmada</option>
+              <option value="Cancelada">Cancelada</option>
+              <option value="Atendida">Atendida</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Columna 2 -->
+        <div class="space-y-4">
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Observaciones</label>
+            <textarea rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                      [(ngModel)]="modeloCita.observaciones" name="observaciones"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Horario Disponible</label>
+            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    [(ngModel)]="modeloCita.horario.idHorario" name="horario" required>
+              <option value="">Seleccione horario</option>
+              <option *ngFor="let h of horarios" [value]="h.idHorario">
+                {{ h.fechaDisponibilidad | date:'dd/MM/yyyy' }} - {{ h.horaInicio }} a {{ h.horaFin }} ({{ h.servicioMedico?.nombreServicio }})
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Fila completa -->
+        <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Médico</label>
+            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    [(ngModel)]="modeloCita.medico.idMedico" name="medico" required>
+              <option value="">Seleccione médico</option>
+              <option *ngFor="let m of medicos" [value]="m.idMedico">
+                {{ m.nombreCompleto }} ({{ m.especialidad }})
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Paciente</label>
+            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    [(ngModel)]="modeloCita.paciente.idPaciente" name="paciente" required>
+              <option value="">Seleccione paciente</option>
+              <option *ngFor="let p of pacientes" [value]="p.idPaciente">
+                {{ p.nombreCompleto }} ({{ p.numeroDocumento }})
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Servicio Médico</label>
+            <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                    [(ngModel)]="modeloCita.servicioMedico.idServicio" name="servicioMedico" required>
+              <option value="">Seleccione servicio</option>
+              <option *ngFor="let s of serviciosMedicos" [value]="s.idServicio">
+                {{ s.nombreServicio }} ({{ s.precio | currency:'PEN':'symbol':'1.2-2' }})
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end space-x-3">
+        <button *ngIf="citaEditando" type="button" 
+                class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 transition"
+                (click)="cancelarEdicion()">
+          Cancelar
+        </button>
+        <button type="submit" 
+                class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                [disabled]="!form.valid">
+          {{ citaEditando ? '💾 Guardar Cambios' : '➕ Agregar Cita' }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Lista de Citas -->
+  <div class="bg-white rounded-xl shadow-md overflow-hidden">
+    <div class="p-6 bg-gradient-to-r from-blue-600 to-teal-500">
+      <h3 class="text-2xl font-bold text-white">📅 Lista de Citas Médicas</h3>
+    </div>
+    
+    <div class="overflow-x-auto p-4">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha/Hora</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Paciente</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Médico</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Servicio</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200">
+          <tr *ngFor="let cita of citas" class="hover:bg-gray-50 transition">
+            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ cita.idCita }}</td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="text-sm font-medium text-gray-900">
+                {{ cita.fechaHora | date:'dd/MM/yyyy' }}
+              </div>
+              <div class="text-sm text-gray-500">
+                {{ cita.fechaHora | date:'HH:mm' }}
+              </div>
+            </td>
+            <td class="px-6 py-4">
+              <div class="text-sm font-medium text-gray-900">{{ cita.paciente?.nombreCompleto }}</div>
+              <div class="text-xs text-gray-500">{{ cita.motivo }}</div>
+            </td>
+            <td class="px-6 py-4">
+              <div class="text-sm text-gray-900">{{ cita.medico?.nombreCompleto }}</div>
+              <div class="text-xs text-gray-500">{{ cita.medico?.especialidad }}</div>
+            </td>
+            <td class="px-6 py-4">
+              <div class="text-sm text-gray-900">{{ cita.servicioMedico?.nombreServicio }}</div>
+              <div class="text-xs text-gray-500">{{ cita.servicioMedico?.precio | currency:'PEN':'symbol':'1.2-2' }}</div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <span class="px-2 py-1 text-xs rounded-full" 
+                    [ngClass]="{
+                      'bg-blue-100 text-blue-800': cita.estado === 'Pendiente',
+                      'bg-green-100 text-green-800': cita.estado === 'Confirmada',
+                      'bg-red-100 text-red-800': cita.estado === 'Cancelada',
+                      'bg-purple-100 text-purple-800': cita.estado === 'Atendida'
+                    }">
+                {{ cita.estado }}
+              </span>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+              <div class="flex space-x-2">
+                <button (click)="cargarCita(cita.idCita)" 
+                        class="text-blue-600 hover:text-blue-900 px-2 py-1 rounded hover:bg-blue-50 transition">
+                  ✏️ Editar
+                </button>
+                <button (click)="eliminarCita(cita.idCita)" 
+                        class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 transition">
+                  🗑️ Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

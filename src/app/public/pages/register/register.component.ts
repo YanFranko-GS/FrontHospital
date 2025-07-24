@@ -22,6 +22,7 @@ export class RegisterComponent {
   showPassword = false;
   showConfirmPassword = false;
   registroExitoso = false;
+  mensajeExito = '';
   submitted = false;
 
   constructor(
@@ -44,39 +45,33 @@ export class RegisterComponent {
 
   onSubmit(): void {
     this.submitted = true;
+
     if (this.registerForm.valid) {
       const { nombreUsuario, correoElectronico, contrasena } = this.registerForm.value;
+
       const registro = {
         nombreUsuario: nombreUsuario ?? '',
         correoElectronico: correoElectronico ?? '',
         contrasena: contrasena ?? ''
       };
+
       this.authService.register(registro).subscribe({
-        next: (data) => {
+        next: () => {
           this.registroExitoso = true;
+          this.mensajeExito = '✅ ¡Te registraste correctamente!';
+
+          // Redirige al login después de 2.5 segundos
           setTimeout(() => {
-            this.tokenStorage.saveToken(data.token);
-            this.tokenStorage.saveUser({
-              nombreUsuario: data.nombreUsuario,
-              correoElectronico: data.correoElectronico,
-              roles: data.roles
-            });
-            const userRole = this.tokenStorage.getUserRole();
-            if (userRole === 'ROLE_ADMIN') {
-              this.router.navigate(['/admin']);
-            } else if (userRole === 'ROLE_USER') {
-              this.router.navigate(['/']);
-            } else {
-              this.router.navigate(['/']);
-            }
-          }, 2000);
+            this.router.navigate(['/login']);
+          }, 1500);
         },
         error: (err) => {
-          console.error(err);
+          console.error('Error al registrar:', err);
+          // Puedes mostrar un mensaje de error aquí si lo deseas
         }
       });
     } else {
       this.registerForm.markAllAsTouched();
     }
   }
-} 
+}

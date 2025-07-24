@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { TokenStorageService } from '../../../shared/services/token-storage.service';
+import { Router } from '@angular/router'; // 👈 importa Router
 
 @Component({
   selector: 'app-public-navbar',
@@ -18,8 +19,10 @@ export class NavbarComponent {
   isDarkMode = false;
   showMobileMenu = false;
 
-  constructor(private tokenStorage: TokenStorageService) {
-    // Leer preferencia de tema al iniciar
+  constructor(
+    private tokenStorage: TokenStorageService,
+    private router: Router // 👈 inyecta Router
+  ) {
     const darkPref = localStorage.getItem('isDarkMode');
     this.isDarkMode = darkPref === 'true';
     if (this.isDarkMode) {
@@ -35,7 +38,7 @@ export class NavbarComponent {
 
   logout(): void {
     this.tokenStorage.signOut();
-    window.location.reload();
+    this.router.navigate(['/']); 
   }
 
   toggleMode() {
@@ -48,5 +51,3 @@ export class NavbarComponent {
     }
   }
 }
-
-

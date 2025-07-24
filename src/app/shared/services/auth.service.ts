@@ -18,6 +18,7 @@ export class AuthService {
 
   register(data: { nombreUsuario: string; correoElectronico: string; contrasena: string }): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/register`, data);
+     responseType: 'text'
   }
 
 //  obtenerPerfil(): Observable<UsuarioResponse> {

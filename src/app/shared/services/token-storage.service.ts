@@ -25,6 +25,15 @@ export class TokenStorageService {
     return user ? JSON.parse(user) : null;
   }
 
+  public getUserName(): string | null {
+  const token = this.getToken();
+  if (!token) return null;
+
+  const payload = JSON.parse(atob(token.split('.')[1]));
+  return payload.nombreUsuario || null;
+}
+
+
   // 👉 Método nuevo para obtener el rol desde el token decodificado
   public getUserRole(): string | null {
     const token = this.getToken();
@@ -36,7 +45,6 @@ export class TokenStorageService {
     const payload = JSON.parse(atob(token.split('.')[1]));
     console.log('Payload decodificado:', payload);
 
-    // Retornamos el rol (que viene como string "ROLE_USER" o "ROLE_ADMIN")
     return payload.roles || null;
   }
 
